@@ -26,7 +26,18 @@ CREATE TABLE Stock (
     FOREIGN KEY (produto_id) REFERENCES Produtos(id)
 );
 
-CREATE TABLE historico_compras (
+CREATE TABLE Compras (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    data_compra DATETIME NOT NULL,
+    quantidade INT NOT NULL,
+    preco_total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES User(id),
+    FOREIGN KEY (produto_id) REFERENCES Produtos(id)
+);
+
+CREATE TABLE Historico_compras (
 
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
@@ -37,3 +48,4 @@ CREATE TABLE historico_compras (
     FOREIGN KEY (cliente_id) REFERENCES User(id),
     FOREIGN KEY (produto_id) REFERENCES Produtos(id)
 );
+
